@@ -1,0 +1,22 @@
+library(survival)
+library(ranger)
+library(ggplot2)
+library(dplyr)
+library(ggfortify)
+library(readxl)
+
+# data(veteran)
+# head(veteran)
+# km <-with(veteran, Surv(time,status) )
+# head(km,80)
+# km_fit<-survfit(Surv(time,status) ~1, data=veteran)
+# summary(km_fit, times = c(1,30,60,90*(1:10)))
+# autoplot(km_fit)
+
+path <- "C:/Users/María Luisa/Downloads/KM.xlsx"
+data <- read_xlsx(path)
+km1 <-with(data, Surv(value,status) )
+head(km1)
+km_fit1<-survfit(Surv(value,status) ~1, data=data)
+summary(km_fit1 )
+autoplot(km_fit1)
